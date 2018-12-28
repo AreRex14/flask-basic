@@ -4,9 +4,19 @@ import re
 
 app = Flask(__name__)
 
+# replace the existing home with home template
 @app.route("/")
 def home():
-    return "Hello, Flask!"
+    return render_template("home.html")
+
+# new functions
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 @app.route("/hello/<name>")
 def hello_there(name):
@@ -28,6 +38,10 @@ def hello_there(name):
 
     content = "Hello there, " + clean_name + "! It's" + formatted_now
     return content
+
+@app.route("/api/data")
+def get_data():
+    return app.send_static_file("data.json")
 
 if __name__ == '__main__': 
     app.run(host='127.0.0.1', debug=True, port=5000)
