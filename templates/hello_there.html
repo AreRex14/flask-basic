@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Hello, Flask</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}"/>
     </head>
     <body>
-        <strong>Hello there, {{ name }}!</strong> It's {{ date.strftime("%A, %d %B, %Y at %X") }}
+        <span class="message">Hello there, {{ name }}!</span>It's {{ date.strftime("%A, %d %B, %Y at %X") }}.
     </body>
 </html>
